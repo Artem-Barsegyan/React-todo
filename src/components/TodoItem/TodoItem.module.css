@@ -1,0 +1,44 @@
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #d6e6f2;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.todo-item input {
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    background-color: #e7eef7;
+}
+
+.todo-item span {
+    width: 100%;
+    max-width: 700px;
+    display: block;
+    word-wrap: break-word;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.completed-task {
+    text-decoration: line-through;
+    background-color: #a5d9c2;
+    border-radius: 4px;
+}
+
+.task {
+    text-decoration: none;
+}
+
+.task, .completed-task {
+    transition: 1s;
+}

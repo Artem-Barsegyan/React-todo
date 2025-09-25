@@ -1,0 +1,9 @@
+.no-todos-img {
+    margin: 0 auto;
+}
+
+.no-todos-img img {
+    width: 100%;
+    border-radius: 10px;
+    opacity: 0.5;
+}
