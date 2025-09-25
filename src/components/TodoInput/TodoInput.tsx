@@ -1,7 +1,8 @@
-import { type JSX, useRef } from "react";
+import { type JSX, useRef, useState, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { setValue, addItem, clearItems } from "../../redux/todoSlice";
 import { toast } from "sonner";
+import { debounce } from "lodash";
 
 import Button from "../Button/Button";
 
@@ -12,18 +13,36 @@ const TodoInput = (): JSX.Element => {
     const items = useAppSelector((state) => state.todoReducer.items);
     const dispatch = useAppDispatch();
     const inputRef = useRef<HTMLInputElement>(null);
+    const [inputValue, setInputValue] = useState('');
 
     const clearInput = () => {
-        dispatch(setValue(''));
+        setInputValue('');
         inputRef.current?.focus();
+    }
+
+    const debounceValue = useCallback(
+        debounce((str) => {
+            dispatch(setValue(str));
+        }, 500),
+        []
+    )
+
+    const changeInputValue = (e: any) => {
+        if (e) {
+            const { value } = e.target;
+            setInputValue(value);
+            debounceValue(value);
+        }
     }
 
     const handleAdd = () => {
         if (value) {
             dispatch(addItem(value));
+            setInputValue('');
             inputRef.current?.focus();
         } else {
             toast.warning('The text field cannot be empty!');
+            inputRef.current?.focus();
         }
     }
 
@@ -53,9 +72,9 @@ const TodoInput = (): JSX.Element => {
                 type="text"
                 name="text"
                 placeholder="Add a new task..."
-                value={value}
-                onChange={e => dispatch(setValue(e.target.value))} />
-            {value && <svg
+                value={inputValue}
+                onChange={(e) => changeInputValue(e)} />
+            {inputValue && <svg
                 className={styles['clear-icon']}
                 onClick={clearInput}
                 width="32"
