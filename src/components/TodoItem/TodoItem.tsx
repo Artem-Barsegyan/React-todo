@@ -74,7 +74,7 @@ const TodoItem = ({ id, task, completed }: { id: string, task: string, completed
                 aria-label="A text field for editing an task"
             /> : <span
                 className={completed ? styles['completed-task'] : styles.task}
-                role={'Task text'}
+                role="text"
                 tabIndex={0}
                 aria-label={`Task: ${task} Status: ${completed ? 'is completed' : 'has not been completed'}`}>{task}</span>}
 

@@ -70,7 +70,7 @@ const TodoInput = (): JSX.Element => {
         }
     }
 
-    const handleClearKeyAddDown = (e: React.KeyboardEvent<HTMLOrSVGElement>) => {
+    const handleClearKeyDown = (e: React.KeyboardEvent<HTMLOrSVGElement>) => {
         if (e.key === 'Enter') {
             setInputValue('');
             inputRef.current?.focus();
@@ -91,7 +91,7 @@ const TodoInput = (): JSX.Element => {
             {inputValue && <svg
                 className={styles['clear-icon']}
                 onClick={clearInput}
-                onKeyDown={handleClearKeyAddDown}
+                onKeyDown={handleClearKeyDown}
                 width="32"
                 height="32"
                 viewBox="0 0 24 24"

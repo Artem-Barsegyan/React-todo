@@ -3,8 +3,8 @@ import React, { type JSX } from "react";
 import styles from './Button.module.css';
 
 
-const Button = ({ text, onClickFunction, disabled, buttonRef, ariaLabelInfo }:
-    { text: string, onClickFunction?: () => void, disabled?: boolean, buttonRef?: React.RefObject<HTMLButtonElement | null>, ariaLabelInfo?: string }): JSX.Element => {
+const Button = ({ text, onClickFunction, disabled, buttonRef }:
+    { text: string, onClickFunction?: () => void, disabled?: boolean, buttonRef?: React.RefObject<HTMLButtonElement | null> }): JSX.Element => {
     return (
         <button
             className={styles.button}
