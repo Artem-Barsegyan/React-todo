@@ -10,6 +10,7 @@ import styles from './TodoItem.module.css';
 const TodoItem = ({ id, task, completed }: { id: string, task: string, completed: boolean }): JSX.Element => {
     const dispatch = useAppDispatch();
     const inputRef = useRef<HTMLInputElement>(null);
+    const editButtonRef = useRef<HTMLButtonElement>(null)
     const [edit, setEdit] = useState(false);
 
     const handleDelete = () => {
@@ -50,6 +51,15 @@ const TodoItem = ({ id, task, completed }: { id: string, task: string, completed
         }
     }
 
+    const handleSaveKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, id: string) => {
+        if (e.key === 'Enter') {
+            saveEditItem(id);
+        }
+        setTimeout(() => {
+            editButtonRef.current?.focus();
+        }, 10)
+    }
+
     return (
         <div
             className={styles['todo-item']}
@@ -60,8 +70,13 @@ const TodoItem = ({ id, task, completed }: { id: string, task: string, completed
                 ref={inputRef}
                 defaultValue={task}
                 disabled={!edit}
+                onKeyDown={e => handleSaveKeyDown(e, id)}
+                aria-label="A text field for editing an task"
             /> : <span
-                className={completed ? styles['completed-task'] : styles.task}>{task}</span>}
+                className={completed ? styles['completed-task'] : styles.task}
+                role={'Task text'}
+                tabIndex={0}
+                aria-label={`Task: ${task} Status: ${completed ? 'is completed' : 'has not been completed'}`}>{task}</span>}
 
             <div className={styles.buttons}>
                 <Button
@@ -76,7 +91,8 @@ const TodoItem = ({ id, task, completed }: { id: string, task: string, completed
                     <Button
                         text={'Edit'}
                         onClickFunction={editItem}
-                        disabled={completed ? true : false} />}
+                        disabled={completed ? true : false}
+                        buttonRef={editButtonRef} />}
             </div>
         </div>
     )
