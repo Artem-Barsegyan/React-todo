@@ -1,4 +1,4 @@
-[🌐 **Демо приложения**](vite-todo-react-app.netlify.app)
+[🌐 **Демо приложения**](https://vite-todo-react-app.netlify.app)
 
 
 # Todo App 📝
