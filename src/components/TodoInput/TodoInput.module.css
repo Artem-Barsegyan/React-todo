@@ -38,3 +38,18 @@ input:focus {
 .clear-icon:hover {
     color: #333;
 }
+
+@media screen and (max-width: 760px) {
+    .todo-input {
+        flex-direction: column;
+    }
+
+    .clear-icon {
+        right: 10px;
+        top: 4px;
+    }
+}
+
+/* @media screen and (max-width: 500px) {
+    width: ;
+} */

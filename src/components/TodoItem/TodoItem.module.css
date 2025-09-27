@@ -39,6 +39,40 @@
     text-decoration: none;
 }
 
-.task, .completed-task {
+.task,
+.completed-task {
     transition: 1s;
+}
+
+@media screen and (max-width: 900px) {
+    .todo-item span {
+        max-width: 600px;
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .todo-item {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .todo-item span {
+        max-width: 100%;
+    }
+
+    .buttons {
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .buttons {
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .buttons {
+        flex-direction: column;
+    }
 }
