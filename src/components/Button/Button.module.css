@@ -16,3 +16,9 @@ button:hover {
 button:active {
   background-color: #7ebcf0;
 }
+
+@media screen and (max-width: 400px) {
+  .button {
+    font-size: 18px;
+  }
+}
