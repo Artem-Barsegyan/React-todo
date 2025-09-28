@@ -9,12 +9,14 @@
   border-radius: 6px;
 }
 
-button:hover {
-  background-color: #c1dbf5;
+.button:active {
+  background-color: #3e9ff1;
 }
 
-button:active {
-  background-color: #7ebcf0;
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    background-color: #c1dbf5;
+  }
 }
 
 @media screen and (max-width: 400px) {
