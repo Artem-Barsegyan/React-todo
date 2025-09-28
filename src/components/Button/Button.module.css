@@ -9,6 +9,9 @@
   border-radius: 6px;
   white-space: nowrap;
   overflow: hidden;
+  color: #2c3e50;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button:active {
