@@ -41,14 +41,14 @@ const TodoInput = (): JSX.Element => {
             setInputValue('');
             inputRef.current?.focus();
         } else {
-            toast.warning('The text field cannot be empty!');
+            toast.info('The text field cannot be empty!');
             inputRef.current?.focus();
         }
     }
 
     const handleAllDelete = () => {
         if (items.length !== 0) {
-            toast.warning('Delete all tasks?', {
+            toast.info('Delete all tasks?', {
                 action: {
                     label: 'Delete',
                     onClick: () => {

@@ -10,11 +10,17 @@ import styles from './TodoItem.module.css';
 const TodoItem = ({ id, task, completed }: { id: string, task: string, completed: boolean }): JSX.Element => {
     const dispatch = useAppDispatch();
     const inputRef = useRef<HTMLInputElement>(null);
-    const editButtonRef = useRef<HTMLButtonElement>(null)
+    const editButtonRef = useRef<HTMLButtonElement>(null);
     const [edit, setEdit] = useState(false);
 
+    useEffect(() => {
+        if (edit) {
+            inputRef.current?.focus();
+        }
+    }, [edit]);
+
     const handleDelete = () => {
-        toast.warning('Delete task?', {
+        toast.info('Delete task?', {
             action: {
                 label: 'Delete',
                 onClick: () => {
@@ -29,12 +35,6 @@ const TodoItem = ({ id, task, completed }: { id: string, task: string, completed
         });
     }
 
-    useEffect(() => {
-        if (edit) {
-            inputRef.current?.focus();
-        }
-    }, [edit]);
-
     const editItem = () => {
         setEdit(true);
     }
@@ -46,7 +46,7 @@ const TodoItem = ({ id, task, completed }: { id: string, task: string, completed
             dispatch(saveEdit({ id, task: newEditValue }));
             toast.success('The changes are saved!', { duration: 1500 });
         } else {
-            toast.warning('The text field cannot be empty!');
+            toast.info('The text field cannot be empty!');
             inputRef.current?.focus();
         }
     }
@@ -81,7 +81,9 @@ const TodoItem = ({ id, task, completed }: { id: string, task: string, completed
             <div className={styles.buttons}>
                 <Button
                     text={completed ? 'Return' : 'Done'}
-                    onClickFunction={() => dispatch(setCompletedItem(id))} />
+                    disabled={edit}
+                    onClickFunction={() => dispatch(setCompletedItem(id))}
+                    titleMessage={edit ? 'You cannot edit a completed task' : ''} />
                 <Button
                     onClickFunction={handleDelete} text={'Delete'} />
                 {edit ?
@@ -91,8 +93,9 @@ const TodoItem = ({ id, task, completed }: { id: string, task: string, completed
                     <Button
                         text={'Edit'}
                         onClickFunction={editItem}
-                        disabled={completed ? true : false}
-                        buttonRef={editButtonRef} />}
+                        disabled={completed}
+                        buttonRef={editButtonRef}
+                        titleMessage={completed ? 'The edited task cannot be marked as completed' : ''} />}
             </div>
         </div>
     )

@@ -2,23 +2,21 @@
   cursor: pointer;
   width: 120px;
   height: 40px;
-  background-color: #7eb8e7!important;
+  background-color: #7eb8e7;
   box-shadow: 0 2px 6px rgba(126, 184, 231, 0.15);
   border: 1px solid #d6e6f2;
-  transition: 0.3s;
+  transition: transform 0.1s ease;
   border-radius: 6px;
-  white-space: nowrap;
-  color: #2c3e50;
 }
 
-.button:active {
-  background-color: #3e9ff1;
+.button:not(:disabled):active {
+  transform: translateY(2px);
+  background-color: #519edf;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .button:hover {
-    background-color: #c1dbf5;
-  }
+.button:disabled {
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 400px) {
