@@ -5,24 +5,25 @@
   background-color: #7eb8e7;
   box-shadow: 0 2px 6px rgba(126, 184, 231, 0.15);
   border: 1px solid #d6e6f2;
-  transition: all 0.3s ease;
+  transition:0.3s;
   border-radius: 6px;
   white-space: nowrap;
-  overflow: hidden;
   color: #2c3e50;
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .button:active {
-  background-color: #8cc7fb !important;
+  background-color: #4499e2!important;
 }
 
-@media (hover: hover) and (pointer: fine) {
+.button:hover {
+  background-color: #c1dbf5;
+}
+
+/* @media (hover: hover) and (pointer: fine) {
   .button:hover {
     background-color: #c1dbf5;
   }
-}
+} */
 
 @media screen and (max-width: 400px) {
   .button {
