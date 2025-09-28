@@ -5,7 +5,7 @@
   background-color: #7eb8e7;
   box-shadow: 0 2px 6px rgba(126, 184, 231, 0.15);
   border: 1px solid #d6e6f2;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   border-radius: 6px;
   white-space: nowrap;
   overflow: hidden;
@@ -15,7 +15,7 @@
 }
 
 .button:active {
-  background-color: #7ebcf0;
+  background-color: #8cc7fb !important;
 }
 
 @media (hover: hover) and (pointer: fine) {
