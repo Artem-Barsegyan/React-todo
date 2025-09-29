@@ -5,6 +5,8 @@ import { loadItems } from "../../redux/todoSlice";
 import TodoInput from "../TodoInput/TodoInput";
 import TodoItem from "../TodoItem/TodoItem";
 
+import '../../reset.css';
+import '../../index.css';
 import styles from './App.module.css';
 import svg from './../../assets/empty-list.jpg';
 
